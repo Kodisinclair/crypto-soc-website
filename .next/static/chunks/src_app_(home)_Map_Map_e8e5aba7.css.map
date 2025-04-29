@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["file:///Users/kodi/Desktop/Crypto-soc-site/src/app/%28home%29/Map/Map.css"],"sourcesContent":["@keyframes heatPulse {\n    0%,\n    100% {\n        fill: #004400;\n    }\n    50% {\n        fill: #008800;\n    }\n}\n\n@keyframes cityPulse {\n    0%,\n    100% {\n        transform: translate(-50%, -50%) scale(1);\n        opacity: 1;\n    }\n    50% {\n        transform: translate(-50%, -50%) scale(1.5);\n        opacity: 0.6;\n    }\n}\n\n.pixel {\n    transition: fill 0.3s;\n}\n.pixel.heat {\n    animation: heatPulse 2s infinite;\n}\n\n.laser-beam {\n    position: absolute;\n    height: 2px;\n    background: linear-gradient(to right, rgba(0, 255, 0, 0) 0%, rgba(0, 255, 0, 0.8) 50%, rgba(0, 255, 0, 0) 100%);\n    opacity: 0;\n    filter: blur(1px) drop-shadow(0 0 2px rgba(0, 255, 0, 0.5));\n    pointer-events: none;\n    transition: opacity 0.1s ease-out;\n}\n\n.laser-beam.active {\n    opacity: 1;\n    animation: laser-flash 0.4s ease-out;\n}\n\n@keyframes laser-flash {\n    0% {\n        opacity: 0;\n    }\n    10% {\n        opacity: 1;\n    }\n    100% {\n        opacity: 0;\n    }\n}\n"],"names":[],"mappings":"AAAA;;;;;;;;;;AAUA;;;;;;;;;;;;AAYA;;;;AAGA;;;;AAIA;;;;;;;;;;AAUA;;;;;AAKA","debugId":null}}]
+}
