@@ -4,7 +4,7 @@ import type { NextRequest } from 'next/server'
 const WORDPRESS_HOST = 'https://UCCryptoSocDao.org.nz'
 
 const rewrites = new Map([
-    ['/mission', false],
+    ['/whitepaper', false],
 ])
 
 export async function middleware(request: NextRequest) {

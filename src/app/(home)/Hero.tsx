@@ -152,10 +152,11 @@ const Hero = () => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.1 }}
                     variants={slideUp}
-                    className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 text-gray-300 relative z-20 font-semibold "
+                    className="text-sm sm:text-base md:text-lg lg:text-xl mb-8 text-gray-300 relative z-20 font-semibold"
                 >
-                    <a href="/whitepaper">- Whitepaper -</a>
-                    
+                    <Link href="/whitepaper" className="hover:text-green-400 transition-colors">
+                        - Whitepaper -
+                    </Link>
                 </motion.p>
                 
 

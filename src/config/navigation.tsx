@@ -39,7 +39,7 @@ const navigation: NavItem[] = [
     },
     {
         text: 'Whitepaper',
-        path: '/Whitepaper',
+        path: '/whitepaper',
         icon: Users,
         isDropdown: false
     },

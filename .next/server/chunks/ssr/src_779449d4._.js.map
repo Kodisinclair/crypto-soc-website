@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
+    {"offset": {"line": 12, "column": 0}, "map": {"version":3,"sources":["file:///Users/kodi/Desktop/Crypto-soc-site/src/app/whitepaper/page.tsx"],"sourcesContent":["'use client'\n\nimport PDFViewer from '@/components/PDFViewer'\n\nexport default function WhitepaperPage() {\n    return <PDFViewer />\n}\n"],"names":[],"mappings":";;;;AAEA;AAFA;;;AAIe,SAAS;IACpB,qBAAO,8OAAC,+HAAA,CAAA,UAAS;;;;;AACrB","debugId":null}}]
+}
