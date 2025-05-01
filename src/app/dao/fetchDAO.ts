@@ -1,5 +1,5 @@
 // lib/fetchDAO.ts
-import { proposalQuery, daoQuery } from './queries';
+import { proposalQuery, daoQuery } from "./queries";
 
 const daoAddress = "0xc26c447eb0c9a783681245fca7f245cfb3f1dd6a";
 
@@ -72,62 +72,72 @@ interface DAOData {
 }
 
 export async function fetchDAOData(): Promise<DAOData> {
-  const endpoint = 'https://gateway-arbitrum.network.thegraph.com/api/09ee157c2e5e6598d352197e957932f6/subgraphs/id/CgH5vtz9CJPdcSmD3XEh8fCVDjQjnRwrSawg71T1ySXW';
+  const endpoint =
+    "https://gateway-arbitrum.network.thegraph.com/api/09ee157c2e5e6598d352197e957932f6/subgraphs/id/CgH5vtz9CJPdcSmD3XEh8fCVDjQjnRwrSawg71T1ySXW";
 
   try {
     const [proposalsResponse, daoResponse] = await Promise.all([
       fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           query: proposalQuery,
-          variables: { daoAddress }
-        })
+          variables: { daoAddress },
+        }),
       }),
       fetch(endpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query: daoQuery })
-      })
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: daoQuery }),
+      }),
     ]);
 
     const proposalsData: ProposalsResponse = await proposalsResponse.json();
     const daoData: DAOResponse = await daoResponse.json();
 
-    if (proposalsData.errors || daoData.errors) throw new Error('GraphQL query failed');
+    if (proposalsData.errors || daoData.errors)
+      throw new Error("GraphQL query failed");
 
-    const formattedProposals: FormattedProposal[] = proposalsData.data.proposals.map((proposal) => {
-      const totalVoteBalance = Number(proposal.yesBalance) + Number(proposal.noBalance);
-      const quorumRequired = (Number(proposal.dao.totalShares) * Number(proposal.dao.quorumPercent)) / 100;
-      const progressPercent = (totalVoteBalance / quorumRequired) * 100;
-      const date = new Date(Number(proposal.createdAt) * 1000);
-      const ending = new Date(Number(proposal.votingEnds) * 1000);
-      const currentDate = new Date();
+    const formattedProposals: FormattedProposal[] =
+      proposalsData.data.proposals.map((proposal) => {
+        const totalVoteBalance =
+          Number(proposal.yesBalance) + Number(proposal.noBalance);
+        const quorumRequired =
+          (Number(proposal.dao.totalShares) *
+            Number(proposal.dao.quorumPercent)) /
+          100;
+        const progressPercent = (totalVoteBalance / quorumRequired) * 100;
+        const date = new Date(Number(proposal.createdAt) * 1000);
+        const ending = new Date(Number(proposal.votingEnds) * 1000);
+        const currentDate = new Date();
 
-      let propStatus: string;
-      if (currentDate > ending) {
-        propStatus = totalVoteBalance >= quorumRequired
-          ? (Number(proposal.yesBalance) > Number(proposal.noBalance) ? "Passed" : "Failed")
-          : "Failed";
-      } else {
-        propStatus = "Active";
-      }
+        let propStatus: string;
+        if (currentDate > ending) {
+          propStatus =
+            totalVoteBalance >= quorumRequired
+              ? Number(proposal.yesBalance) > Number(proposal.noBalance)
+                ? "Passed"
+                : "Failed"
+              : "Failed";
+        } else {
+          propStatus = "Active";
+        }
 
-      return {
-        title: proposal.title || `Proposal #${proposal.id}`,
-        description: proposal.description || 'No description provided',
-        id: proposal.id,
-        progress: Math.min(progressPercent, 100),
-        quorum: {
-          current: totalVoteBalance,
-          required: quorumRequired,
-          percent: proposal.dao.quorumPercent
-        },
-        status: propStatus,
-        createdAt: date.toLocaleDateString('en-GB'),
-        raw: proposal
-      };
-    });
+        return {
+          title: proposal.title || `Proposal #${proposal.id}`,
+          description: proposal.description || "No description provided",
+          id: proposal.id,
+          progress: Math.min(progressPercent, 100),
+          quorum: {
+            current: totalVoteBalance,
+            required: quorumRequired,
+            percent: proposal.dao.quorumPercent,
+          },
+          status: propStatus,
+          createdAt: date.toLocaleDateString("en-GB"),
+          raw: proposal,
+        };
+      });
 
     const dao = daoData.data.dao;
 
@@ -142,13 +152,15 @@ export async function fetchDAOData(): Promise<DAOData> {
         activeMemberCount: dao.activeMemberCount || 0,
         totalShares: Math.floor(Number(dao.totalShares || 0) / 1e18),
         proposalCount: dao.proposalCount || formattedProposals.length,
-        tokenBalance: '0',
+        tokenBalance: "0",
         content: dao.profile?.[0]?.content || null,
-        createdAt: new Date(Number(dao.createdAt) * 1000).toLocaleDateString('en-GB')
-      }
+        createdAt: new Date(Number(dao.createdAt) * 1000).toLocaleDateString(
+          "en-GB",
+        ),
+      },
     };
   } catch (error) {
-    console.error('Error fetching DAO data:', error);
+    console.error("Error fetching DAO data:", error);
     return {
       dao: {
         proposals: [],
@@ -156,10 +168,10 @@ export async function fetchDAOData(): Promise<DAOData> {
         activeMemberCount: 0,
         totalShares: 0,
         proposalCount: 0,
-        tokenBalance: '0',
+        tokenBalance: "0",
         content: null,
-        createdAt: null
-      }
+        createdAt: null,
+      },
     };
   }
 }

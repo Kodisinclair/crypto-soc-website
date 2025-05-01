@@ -1,13 +1,11 @@
-import Hero from './Hero'
-
-
+import Hero from "./Hero";
 
 const HistoryPage = () => {
-    return (
-        <>
-            <Hero />
-        </>
-    )
-}
+  return (
+    <>
+      <Hero />
+    </>
+  );
+};
 
-export default HistoryPage
+export default HistoryPage;

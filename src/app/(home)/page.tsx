@@ -1,19 +1,17 @@
-import Hero from './Hero'
-import Sponsor from './sponsors'
-import Awards from './Awards'
-
+import Hero from "./Hero";
+import Sponsor from "./sponsors";
+import Awards from "./Awards";
 
 const HomePage = () => {
-    return (
-        <>
-            <Hero />
-            <Sponsor />
-            <Awards/>
+  return (
+    <>
+      <Hero />
+      <Sponsor />
+      <Awards />
 
-            {/*<ExpoSection />*/}
+      {/*<ExpoSection />*/}
+    </>
+  );
+};
 
-        </>
-    )
-}
-
-export default HomePage
+export default HomePage;
