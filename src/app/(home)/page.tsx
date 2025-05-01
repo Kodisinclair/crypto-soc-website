@@ -1,5 +1,5 @@
 import Hero from './Hero'
-import Sponsor from './sposors'
+import Sponsor from './sponsors'
 import Awards from './Awards'
 
 

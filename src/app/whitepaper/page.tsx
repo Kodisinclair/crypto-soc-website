@@ -6,10 +6,6 @@ const HomePage = () => {
     return (
         <>
             <Hero />
-
-
-            {/*<ExpoSection />*/}
-
         </>
     )
 }

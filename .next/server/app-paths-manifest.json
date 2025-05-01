@@ -1,6 +1,7 @@
 {
-  "/(home)/page": "app/(home)/page.js",
   "/_not-found/page": "app/_not-found/page.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/whitepaper/page": "app/whitepaper/page.js"
+  "/(home)/page": "app/(home)/page.js",
+  "/history/page": "app/history/page.js",
+  "/whitepaper/page": "app/whitepaper/page.js",
+  "/dao/page": "app/dao/page.js"
 }

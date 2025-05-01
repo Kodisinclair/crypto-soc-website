@@ -3,6 +3,7 @@ import { createElement, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import navigation, { isDropdown, getAllMenuItems } from '../config/navigation'
 import { LucideIcon } from 'lucide-react'
+import Link from 'next/link'
 
 interface NavItemProps {
     text: string
@@ -98,7 +99,7 @@ const NavItem = ({ text, link, icon, dropdownContent }: NavItemProps) => {
                 <button
                     className="flex items-center gap-2 px-3 py-2 rounded-lg text-gray-300 
                        hover:text-white hover:bg-orange-500/10 transition-all duration-300
-                       hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] font-medium
+                       hover:shadow-[0_0_15px_rgba(255,165,0,0.4)] font-medium
                        text-base"
                 >
                     {icon && <span className="text-orange-400">{createElement(icon, { size: 20 })}</span>}
@@ -122,7 +123,7 @@ const NavItem = ({ text, link, icon, dropdownContent }: NavItemProps) => {
         <a
             href={link || '#'}
             className="px-3 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-orange-500/10 
-                transition-all duration-300 hover:shadow-[0_0_15px_rgba(34,197,94,0.3)] 
+                transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,165,0,0.4)] 
                 font-medium flex items-center gap-2 text-base whitespace-nowrap"
         >
             {icon && <span className="text-orange-400">{createElement(icon, { size: 18 })}</span>}
@@ -215,7 +216,9 @@ const Navbar = () => {
                     {/* Title and Navigation Container */}
                     <div className="flex flex-1 items-center justify-between min-[1200px]:justify-between ">
                         <div className="text-center flex-shrink-0 mx-2 md:mx-4">
-                            <img src="../images/Crypto-soc-Logo.png" className='h-20 md:h-20 mx-auto'></img>
+                            <Link href ="/">
+                            <img src="../images/Crypto-soc-Logo.png" alt="Crypto Soc Logo" className='h-20 md:h-20 mx-auto hover:border-orange-400'></img>
+                            </Link>
                         </div>
 
                         {/* Desktop Navigation - Better spacing and organization */}

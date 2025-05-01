@@ -1,4 +1,4 @@
-import { LucideIcon, Award,Mail, Swords, Handshake,  Book, Building, Calendar, CreditCard, DollarSign, GanttChart, Gift, Globe, HardDrive, HelpCircle, Home, Info, MessageSquare, Server, ShieldAlert, ShoppingBag, Store, TrendingUp, Users, Wallet, Building2, MapPin, Landmark, Calculator, Smartphone } from 'lucide-react'
+import { LucideIcon, BookText,Mail, Swords, Handshake,  Book, Home,} from 'lucide-react'
 
 export interface NavSectionSubItem {
     title: string
@@ -40,7 +40,7 @@ const navigation: NavItem[] = [
     {
         text: 'Whitepaper',
         path: '/whitepaper',
-        icon: Users,
+        icon: BookText,
         isDropdown: false
     },
 
@@ -60,14 +60,14 @@ const navigation: NavItem[] = [
     },
     {
         text: 'Support us',
-        path: '/support',
+        path: 'mailto:UCCryptoSocDAO@protonmail.com',
         icon: Handshake,
         isDropdown: false
     },
     {
         text: 'Contact',
         icon: Mail,
-        path: '/contact',
+        path: 'mailto:UCCryptoSocDAO@protonmail.com',
         isDropdown: false,
 
     }
