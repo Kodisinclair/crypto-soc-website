@@ -211,7 +211,7 @@ export default function DAODashboard() {
   return (
     <div className="relative w-full flex flex-col items-center justify-start mt-10 md:mt-20 min-h-[80vh] lg:min-h-screen bg-gradient-to-br from-black-600 to-gray-800">
       <Link href="/">
-        <a className="text-white text-sm underline mb-4">← Back to Home</a>
+        <p className="text-white text-sm underline mb-4">← Back to Home</p>
       </Link>
 
       <div className="w-full text-center px-4 mb-10 md:px-[5%] pt-6 md:pt-8 mt-6 md:mt-10 font-bold text-2xl md:text-4xl text-white">
@@ -301,9 +301,14 @@ export default function DAODashboard() {
                         ></div>
                       </div>
                       <div className="text-sm text-gray-300">
-                        Quorum: {Math.round(proposal.progress)}% (
-                        {proposal.quorum.current} / {proposal.quorum.required}{" "}
-                        votes)
+                        Quorum: {}
+                        {(
+                          (proposal.quorum.current / proposal.quorum.required) *
+                          100
+                        ).toPrecision(3)}
+                        % ({/* Quorum: {}{Math.round(proposal.progress)}% ( */}
+                        {Number(proposal.quorum.current) / 1e18} /{" "}
+                        {Number(proposal.quorum.required) / 1e18} votes)
                       </div>
                       <div className="flex justify-between items-center mt-2 text-sm text-gray-400">
                         <span>
